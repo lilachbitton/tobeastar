@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-// בתחילת הקובץ
 const Hero = () => {
+  // מעקב אחרי גודל המסך
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section className="min-h-screen relative py-20 overflow-hidden">
       {/* Video Background */}
@@ -10,12 +21,15 @@ const Hero = () => {
           autoPlay
           loop
           muted
+          playsInline
           className="w-full h-full object-cover opacity-30"
         >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          <source 
+            src={isMobile ? "/videos/hero-bg-mobile.mp4" : "/videos/hero-bg.mp4"} 
+            type="video/mp4" 
+          />
         </video>
       </div>
-      {/* שאר התוכן נשאר אותו דבר */}
       
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col justify-center min-h-screen">
@@ -25,7 +39,7 @@ const Hero = () => {
           </h1>
           <p className="text-3xl md:text-4xl mb-8 tracking-wide text-center">
             קורס משחק ויצירת תוכן מבית 
-            <span className="turquoise-text font-bold">רמי קאשי</span>
+            <span className="turquoise-text font-bold"> רמי קאשי</span>
           </p>
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-xl md:text-2xl mb-12 leading-relaxed text-gray-300">
@@ -37,7 +51,7 @@ const Hero = () => {
           <div className="flex flex-col items-center justify-center gap-4 max-w-xl mx-auto">
             <a 
               href="#register" 
-              className="glowing-btn py-4 px-16 rounded-xl text-2xl text-center">
+              className="glowing-btn py-4 px-16 rounded-xl text-2xl text-center hover:scale-105 transition-all duration-300">
               קבע אודישן עכשיו
             </a>
             <p className="turquoise-text text-xl">
