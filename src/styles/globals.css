@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&family=Urbanist:wght@900&family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+  --turquoise: #40E0D0;
+  --dark-turquoise: #20B2AA;
+  --light-turquoise: #7FFFD4;
+}
+
+body {
+  font-family: 'Assistant', sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: 'Urbanist', 'Varela Round', sans-serif;
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+h2, h3, .title-font {
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.hero-text {
+  transform: skew(-5deg);
+}
+
+.hero-text span {
+  display: inline-block;
+  position: relative;
+  transform: skew(5deg);
+}
+
+.turquoise-text {
+  background: linear-gradient(120deg, var(--turquoise), var(--light-turquoise));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.turquoise-border {
+  position: relative;
+  background: rgba(32, 178, 170, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.turquoise-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--turquoise), transparent, var(--light-turquoise));
+  border-radius: 22px;
+  z-index: -1;
+  animation: borderFlow 8s linear infinite;
+}
+
+.glowing-btn {
+  background: linear-gradient(45deg, #00827F, #00B5B2);
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.form-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(64, 224, 208, 0.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--turquoise);
+  box-shadow: 0 0 15px rgba(64, 224, 208, 0.2);
+}
+
+@keyframes borderFlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
