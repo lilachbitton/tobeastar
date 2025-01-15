@@ -12,9 +12,9 @@ const instructorsData = [
     image: '/images/instructors/liraz-ozeri.jpg'
   },
   {
-    name: 'מיכל בוזגלו',
-    role: 'טיקטוקרית ושחקנית עם מעל 100 אלף עוקבים',
-    image: '/images/instructors/michal-buzaglo.jpg'
+    name: 'יוני חרל"פ',
+    role: 'שחקן ובמאי טלוויזיה, יוצר תוכן מוביל שכתב וביים עבור קווין רובין',
+    image: '/images/instructors/yoni-harlap.jpg'
   },
   {
     name: 'הרצל טובי',
@@ -25,6 +25,11 @@ const instructorsData = [
     name: 'אמיל בן שמעון',
     role: 'במאי קולנוע וטלוויזיה, יוצר הסדרה "זיגי" והסרט "ישמח חתני"',
     image: '/images/instructors/emil-ben-shimon.jpg'
+  },
+  {
+    name: 'מיכל בוזגלו',
+    role: 'טיקטוקרית ושחקנית עם מעל 100 אלף עוקבים',
+    image: '/images/instructors/michal-buzaglo.jpg'
   }
 ];
 
@@ -45,9 +50,8 @@ const InstructorCard = ({ name, role, image }) => (
 );
 
 const Instructors = () => {
-  // חלוקת המרצים לשתי שורות
-  const firstRow = instructorsData.slice(0, 3);  // שלושת הראשונים
-  const secondRow = instructorsData.slice(3);    // השניים האחרונים
+  const firstRow = instructorsData.slice(0, 3);
+  const secondRow = instructorsData.slice(3);
 
   return (
     <section className="py-24 relative">
@@ -55,14 +59,12 @@ const Instructors = () => {
         <h2 className="text-5xl font-bold text-center mb-20 tracking-tight">
           <span className="turquoise-text">צוות המרצים המוביל בישראל</span>
         </h2>
-        {/* שורה ראשונה - שלושה מרצים */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {firstRow.map((instructor) => (
             <InstructorCard key={instructor.name} {...instructor} />
           ))}
         </div>
-        {/* שורה שנייה - שני מרצים ממורכזים */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-[800px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-full mx-auto">
           {secondRow.map((instructor) => (
             <InstructorCard key={instructor.name} {...instructor} />
           ))}
